@@ -1,0 +1,47 @@
+{
+  "name": "expo-gbk-converter",
+  "version": "1.0.0",
+  "description": "An Expo module to decode GBK/GB18030 encoded text from base64 string",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evansuner/expo-gbk-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evansuner/expo-gbk-converter/issues"
+  },
+  "homepage": "https://github.com/evansuner/expo-gbk-converter#readme",
+  "keywords": [
+    "expo",
+    "expo-module",
+    "gbk",
+    "gb18030",
+    "encoding",
+    "decoder",
+    "chinese",
+    "react-native"
+  ],
+  "author": "Evan Sun <zhidong.s@outlook.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "expo": ">=51.0.0"
+  },
+  "devDependencies": {
+    "expo-modules-core": "^2.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "build",
+    "src",
+    "android",
+    "ios",
+    "app.plugin.js",
+    "expo-module.config.json"
+  ]
+}

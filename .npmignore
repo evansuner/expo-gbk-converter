@@ -1,0 +1,25 @@
+# Source files (use build output instead)
+*.ts
+!*.d.ts
+tsconfig.json
+
+# Build artifacts
+android/build/
+ios/build/
+
+# Development files
+.git
+.gitignore
+.vscode
+.idea
+
+# Test files
+__tests__
+*.test.ts
+*.spec.ts
+
+# Documentation source
+docs/
+
+# Example app
+example/
