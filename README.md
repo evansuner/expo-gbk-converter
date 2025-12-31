@@ -46,19 +46,22 @@ console.log(utf8Text); // Now you have the readable Chinese text
 Decodes a GBK/GB18030 encoded base64 string to UTF-8 text.
 
 **Parameters:**
+
 - `base64` (string): Base64 encoded string of GBK/GB18030 data
 
 **Returns:**
+
 - `Promise<string>`: Decoded UTF-8 text
 
 **Throws:**
+
 - Error if the base64 string is invalid
 - Error if the data cannot be decoded as GBK/GB18030
 
 ## Platform Support
 
 | Platform | Support |
-|----------|---------|
+| -------- | ------- |
 | iOS      | ✅      |
 | Android  | ✅      |
 | Web      | ❌      |
@@ -68,7 +71,6 @@ Decodes a GBK/GB18030 encoded base64 string to UTF-8 text.
 ## Use Cases
 
 - Parsing Alipay (支付宝) bill exports
-- Parsing WeChat Pay (微信支付) bill exports
 - Reading legacy Chinese encoded files
 - Processing CSV files with GBK encoding
 
