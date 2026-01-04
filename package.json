@@ -5,9 +5,10 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "clean": "rm -rf build"
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,7 @@
     "expo": ">=51.0.0"
   },
   "devDependencies": {
-    "expo-modules-core": "^2.0.0",
+    "expo-modules-core": "^3.0.29",
     "typescript": "^5.0.0"
   },
   "files": [
