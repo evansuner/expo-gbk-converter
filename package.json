@@ -1,14 +1,16 @@
 {
   "name": "expo-gbk-converter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An Expo module to decode GBK/GB18030 encoded text from base64 string",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
+    "build": "tsc",
+    "clean": "rm -rf build",
     "lint": "expo-module lint",
-    "test": "expo-module test"
+    "test": "expo-module test",
+    "prepare": "tsc",
+    "prepublishOnly": "tsc"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,9 @@
   "peerDependencies": {
     "expo": ">=51.0.0"
   },
+  "dependencies": {},
   "devDependencies": {
+    "expo-module-scripts": "^5.0.8",
     "expo-modules-core": "^3.0.29",
     "typescript": "^5.0.0"
   },
