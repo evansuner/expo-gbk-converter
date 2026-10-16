@@ -21,12 +21,17 @@ yarn add expo-gbk-converter
 - Expo SDK 51+
 - iOS 15.1+
 - Android minSdkVersion 24+
+- Web: a browser with atob and TextDecoder support for GB18030.
+
+On iOS and Android, this package requires a development build containing the native module; it does not run in Expo Go. Rebuild your app after installation using npx expo run:ios or npx expo run:android, or use an EAS development build.
 
 ## Usage
 
+The examples use the legacy FileSystem API on current Expo SDKs. On older SDKs without the legacy entry point, import from expo-file-system instead. Install expo-file-system separately with npx expo install expo-file-system.
+
 ```typescript
 import { decodeGBK } from 'expo-gbk-converter';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 
 // Read a GBK encoded file as base64
 const base64Content = await FileSystem.readAsStringAsync(fileUri, {
@@ -53,10 +58,10 @@ Decodes a GBK/GB18030 encoded base64 string to UTF-8 text.
 
 - `Promise<string>`: Decoded UTF-8 text
 
-**Throws:**
+**Promise rejection:**
 
 - Error if the base64 string is invalid
-- Error if the data cannot be decoded as GBK/GB18030
+- On iOS and web, invalid GBK/GB18030 data rejects the promise. Android currently replaces malformed byte sequences with replacement characters.
 
 ## Platform Support
 
@@ -64,9 +69,9 @@ Decodes a GBK/GB18030 encoded base64 string to UTF-8 text.
 | -------- | ------- |
 | iOS      | ✅      |
 | Android  | ✅      |
-| Web      | ❌      |
+| Web      | ✅      |
 
-> Note: Web platform is not supported because browsers don't have native GBK decoding support. Consider using a JavaScript-based decoder like `iconv-lite` for web.
+> Web uses TextDecoder with fatal decoding: invalid byte sequences reject the promise. Pass raw base64, without a data URL prefix. The file-reading examples below target native apps; on web, obtain base64 from a browser file API.
 
 ## Use Cases
 
@@ -78,7 +83,7 @@ Decodes a GBK/GB18030 encoded base64 string to UTF-8 text.
 
 ```typescript
 import { decodeGBK } from 'expo-gbk-converter';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import Papa from 'papaparse';
 
 async function parseAlipayBill(fileUri: string) {
@@ -109,6 +114,8 @@ MIT
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+Run npm install, npm test, and npm run build before submitting changes. The automated tests cover the web decoder (Chinese text, four-byte GB18030 characters, CSV line endings, empty input, and invalid input). Native behavior must also be verified in an iOS/Android development build.
 
 ## Author
 
