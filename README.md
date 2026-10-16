@@ -18,10 +18,12 @@ yarn add expo-gbk-converter
 
 ## Requirements
 
-- Expo SDK 51+
+- Expo SDK 53+
 - iOS 15.1+
 - Android minSdkVersion 24+
 - Web: a browser with atob and TextDecoder support for GB18030.
+
+> **Upgrading from 1.x:** 2.0.0 migrates the Android build to `expo-module-gradle-plugin`, which `expo-modules-core` ships from Expo SDK 53 onward. That moves the supported floor from SDK 51 to SDK 53. The bundled `app.plugin.js` was a no-op and has been removed — if your `app.json` or `app.config.js` lists `expo-gbk-converter` in `plugins`, delete that entry or `expo prebuild` will fail.
 
 On iOS and Android, this package requires a development build containing the native module; it does not run in Expo Go. Rebuild your app after installation using npx expo run:ios or npx expo run:android, or use an EAS development build.
 
@@ -115,7 +117,7 @@ MIT
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-Run npm install, npm test, and npm run build before submitting changes. The automated tests cover the web decoder (Chinese text, four-byte GB18030 characters, CSV line endings, empty input, and invalid input). Native behavior must also be verified in an iOS/Android development build.
+Run npm install, npm run lint, npm test, and npm run build before submitting changes. The tests cover the web decoder (Chinese text, four-byte GB18030 characters, CSV line endings, empty input, and invalid input) plus a manifest check that the version and native module names stay in sync across package.json, the Gradle build file, the podspec, and the Kotlin/Swift sources. Native behavior must also be verified in an iOS/Android development build.
 
 ## Author
 

@@ -1,16 +1,16 @@
 {
   "name": "expo-gbk-converter",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "An Expo module to decode GBK/GB18030 encoded text from base64 string",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "node -e \"require('node:fs').rmSync('build', { recursive: true, force: true })\"",
-    "lint": "expo-module lint",
+    "lint": "eslint src index.ts",
     "test": "node --test tests/*.test.cjs",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run build"
+    "prepublishOnly": "npm test && npm run build && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -33,20 +33,26 @@
   "author": "Evan Sun <zhidong.s@outlook.com>",
   "license": "MIT",
   "peerDependencies": {
-    "expo": ">=51.0.0"
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
   },
   "dependencies": {},
   "devDependencies": {
-    "expo-module-scripts": "^5.0.8",
-    "expo-modules-core": "^3.0.29",
-    "typescript": "^5.0.0"
+    "eslint": "^9.39.4",
+    "eslint-config-universe": "^16.1.2",
+    "expo": "^58.0.12",
+    "expo-modules-core": "^58.0.20",
+    "prettier": "^3.0.0",
+    "react": "19.3.0",
+    "react-native": "0.88.0",
+    "typescript": "^5.9.3"
   },
   "files": [
     "build",
     "src",
     "android",
     "ios",
-    "app.plugin.js",
     "expo-module.config.json"
   ]
 }
