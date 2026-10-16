@@ -61,7 +61,7 @@ Decodes a GBK/GB18030 encoded base64 string to UTF-8 text.
 **Promise rejection:**
 
 - Error if the base64 string is invalid
-- Error if the data cannot be decoded as GBK/GB18030
+- On iOS and web, invalid GBK/GB18030 data rejects the promise. Android currently replaces malformed byte sequences with replacement characters.
 
 ## Platform Support
 
@@ -125,4 +125,3 @@ Evan Sun <zhidong.s@outlook.com>
 
 If you find this project helpful, consider buying me a coffee:  
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://cdn.evanidea.cc/CDN/buy-me-a-coffee.jpg)
-
