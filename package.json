@@ -5,12 +5,12 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf build",
+    "build": "npm run clean && tsc",
+    "clean": "node -e \"require('node:fs').rmSync('build', { recursive: true, force: true })\"",
     "lint": "expo-module lint",
     "test": "node --test tests/*.test.cjs",
-    "prepare": "tsc",
-    "prepublishOnly": "tsc"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run build"
   },
   "repository": {
     "type": "git",
