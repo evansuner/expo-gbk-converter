@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name           = 'ExpoGbkConverter'
-  s.version        = '1.0.0'
+  s.version        = '2.0.0'
   s.summary        = 'Expo module to decode GBK/GB18030 encoded text'
   s.description    = 'An Expo native module that decodes GBK/GB18030 encoded base64 strings to UTF-8 text, useful for parsing Chinese encoded files.'
   s.author         = 'Evan Sun'
